@@ -1,0 +1,25 @@
+{
+  "name": "owen-photos",
+  "version": "1.0.0",
+  "description": "Photo module and carousel for Tenthop",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuckNorris3/Owen-Photos.git"
+  },
+  "author": "Owen Wexler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuckNorris3/Owen-Photos/issues"
+  },
+  "homepage": "https://github.com/DuckNorris3/Owen-Photos#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
+}
