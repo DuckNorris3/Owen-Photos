@@ -12,7 +12,9 @@ let server;
 const start = () => (server = app.listen(PORT, () => { console.log('Photo Carousel server running on port ', PORT)}));
 const close = server ? server.close : () => {};
 
-start();
+if (process.env.NODE_ENV !== 'test') {
+  start();
+}
 
 module.exports = {
   start,
