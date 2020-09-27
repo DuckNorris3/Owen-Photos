@@ -16,17 +16,22 @@ const generateRandomPictureFileNumber = () => {
 }
 
 const generateUsername = () => {
-  const firstName = faker.name.firstName;
-  const lastName = faker.name.lastName;
+  const firstName = faker.name.firstName();
+  const lastName = faker.name.lastName();
   return `${capitalize(firstName)} ${lastName[0].toUpperCase()}.`;
 }
 
 const generatePostedOn = () => {
-  return faker.date.past;
+  return faker.date.past();
 }
 
 const generateCaption = () => {
-  return faker.lorem.sentence;
+  return faker.lorem.sentence();
+}
+
+const generateUserPic = () => {
+  const picNum = generateRandomNumber(0, 37);
+  return `https://obwfec-tenthop.s3.amazonaws.com/ICON${picNum}.jpg`;
 }
 
 const generateLocation = () => {
@@ -34,7 +39,9 @@ const generateLocation = () => {
 
   const nouns = ['tent', 'campground', 'camp', 'glamp', 'glam-tent', 'cabin', 'bed', 'round-bed', 'cottage', 'glampground']
 
-  const adjectiveIndexOne = generateRandomNumber(0, adjectives.length - 1);
+  let adjectiveIndexOne = generateRandomNumber(0, adjectives.length - 1);
+
+  let adjectiveIndexTwo = generateRandomNumber(0, adjectives.length - 1);
 
   while (adjectiveIndexTwo === adjectiveIndexOne) {
     adjectiveIndexTwo = generateRandomNumber(0, adjectives.length - 1);
@@ -42,7 +49,7 @@ const generateLocation = () => {
 
   const nounIndex = generateRandomNumber(0, nouns.length - 1);
 
-  return `${capitalize(adjectives[adjectiveIndexOne])} ${adjectives[adjectiveIndexTwo]} ${nouns[nounIndex]} in ${faker.address.state}`;
+  return `${capitalize(adjectives[adjectiveIndexOne])} ${adjectives[adjectiveIndexTwo]} ${nouns[nounIndex]} in ${faker.address.state()}`;
 }
 
 const pictureObject = (pictureID) => {
@@ -50,20 +57,42 @@ const pictureObject = (pictureID) => {
   const s3picURL = `https://obwfec-tenthop.s3.amazonaws.com/IMG${picNum}.jpg`;
 
   return {
-    pictureID: pictureID,
     picUrl: s3picURL,
-    helpful: generateRandomNumber(1, 8);
+    helpful: generateRandomNumber(1, 8)
   }
 }
 
-const seedObject(siteID) {
+const generatePictureArray = () => {
+  const picArray = [];
+  const numPics = generateRandomNumber(3, 5);
+
+  for(let i = 0; i < numPics; i++) {
+    picArray.push(pictureObject(i));
+  }
+
+  return picArray;
+}
+
+const generateSeedObject = (siteID) => {
   return {
     siteID: siteID,
     userName: generateUsername(),
-    userPic: // TODO: generateUserPic(),
-    postedon: generatePostedOn(),
+    userPic: generateUserPic(),
+    postedOn: generatePostedOn(),
     location: generateLocation(),
     caption: generateCaption(),
-    pictures: // TODO: generatePictureArray()
+    pictures: generatePictureArray()
   }
 }
+
+const seedDB = () => {
+  let seedArray = [];
+
+  for (let i = 0; i < 100; i++) {
+    seedArray.push(generateSeedObject(i));
+  }
+
+  return seedArray;
+}
+
+module.exports.seedDB = seedDB;
