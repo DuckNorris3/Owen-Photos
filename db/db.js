@@ -23,4 +23,4 @@ const getAll = (cb) => {
   })
 }
 
-module.exports.save = save;
+module.exports.getAll = getAll;

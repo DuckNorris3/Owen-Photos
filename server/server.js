@@ -2,10 +2,13 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3003;
 
+const seedHelpers = require('../db/seed-helpers.js');
+
 app.use(express.json());
 
 app.get('/api/campsites', (req, res) => {
-  res.send('Here are some campsites!');
+  const seedArray = seedHelpers.seedDB();
+  res.json(seedArray);
 })
 
 let server;
