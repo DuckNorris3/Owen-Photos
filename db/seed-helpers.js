@@ -85,7 +85,7 @@ const generateSeedObject = (siteID) => {
   }
 }
 
-const seedDB = () => {
+const generateFullSeed = () => {
   let seedArray = [];
 
   for (let i = 0; i < 100; i++) {
@@ -95,4 +95,4 @@ const seedDB = () => {
   return seedArray;
 }
 
-module.exports.seedDB = seedDB;
+module.exports.generateFullSeed = generateFullSeed;
