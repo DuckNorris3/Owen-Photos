@@ -2,13 +2,32 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3003;
 
-const seedHelpers = require('../db/seed-helpers.js');
+const PhotoSiteController = require('../db/PhotoSiteController.js');
 
 app.use(express.json());
 
+// ROUTES
+
+// get all campsites
 app.get('/api/campsites', (req, res) => {
-  const seedArray = seedHelpers.seedDB();
-  res.json(seedArray);
+  PhotoSiteController.getAll((err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(data);
+    }
+  })
+})
+
+// get one campsite by a specific siteID
+app.get('/api/campsite/', (req, res) => {
+  PhotoSiteController.getBySiteId(req.query.siteID, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(data);
+    }
+  })
 })
 
 let server;
