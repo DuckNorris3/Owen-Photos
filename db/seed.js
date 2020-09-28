@@ -6,7 +6,11 @@ const seedData = seedHelper.generateFullSeed()
 
 const seedDB = function() {
   PhotoSiteModel.create(seedData)
-    .then(() => db.disconnect());
+    .then(() => {
+      console.log('database seeded successfully');
+      db.disconnect();
+    })
+    .catch(err => console.log(err));
 };
 
 seedDB();
