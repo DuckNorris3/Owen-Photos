@@ -23,3 +23,5 @@ const getAll = (cb) => {
     }
   })
 }
+
+module.exports = PhotoSite;
