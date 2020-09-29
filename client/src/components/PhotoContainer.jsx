@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PhotoModContainerStyle, PhotoModEntryStyle } from './styledComponents.jsx';
+import { PhotoModContainerStyle, PhotoModImageStyle } from './styledComponents.jsx';
 
-const PhotoContainer = () => {
+const PhotoContainer = ({siteData, pictures}) => {
+
   return (
     <PhotoModContainerStyle>
-      <PhotoModEntryStyle /><PhotoModEntryStyle /><PhotoModEntryStyle />
+      <PhotoModImageStyle src={siteData.pictures[0].picUrl}/><PhotoModImageStyle src={siteData.pictures[1].picUrl}/><PhotoModImageStyle src={siteData.pictures[2].picUrl}/>
     </PhotoModContainerStyle>
   )
 }

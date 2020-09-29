@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 const PhotoModContainerStyle = styled.div`
-  border: 2px solid red;
   display: grid;
   grid-template-columns: 37% 37% 80%;
-  column-gap: 7px;
+  grid-column-gap: 15px;
   width: 98%;
   height: 24em;
   margin: 10px 15px 10px 10px;
@@ -12,12 +11,18 @@ const PhotoModContainerStyle = styled.div`
   overflow: hidden;
 `;
 
+const PhotoModImageStyle = styled.img`
+  border: 2px solid red;
+  height: 99%;
+  padding: 0;
+  margin-right: 15px;
+`;
+
 const PhotoModEntryStyle = styled.div`
-  border: 2px solid blue;
   background-color: green;
   height: 99%;
   padding: 0;
   margin-right: 15px;
 `;
 
-export { PhotoModContainerStyle, PhotoModEntryStyle };
+export { PhotoModContainerStyle, PhotoModEntryStyle, PhotoModImageStyle };
