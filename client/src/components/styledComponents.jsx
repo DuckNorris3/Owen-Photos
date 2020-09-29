@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const PhotoModContainerStyle = styled.div`
-  border: 1px solid red;
+  border: 2px solid red;
   display: grid;
   grid-template-columns: 37% 37% 80%;
   column-gap: 7px;
