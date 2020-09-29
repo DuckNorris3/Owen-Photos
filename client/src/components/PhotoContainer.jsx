@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import PhotoContainerEntry from './PhotoContainerEntry.jsx';
 import { PhotoModContainerStyle, PhotoModImageStyle } from './styledComponents.jsx';
 
-const PhotoContainer = ({siteData, pictures, setModalOn}) => {
+const PhotoContainer = ({siteData, pictures, setModalOn, setCurrentPicIndex}) => {
 
   return (
     <PhotoModContainerStyle>
-      <PhotoModImageStyle src={siteData.pictures[0].picUrl} onClick={() => setModalOn(true)}/><PhotoModImageStyle src={siteData.pictures[1].picUrl} onClick={() => setModalOn(true)}/><PhotoModImageStyle src={siteData.pictures[2].picUrl} onClick={() => setModalOn(true)}/>
+      <PhotoContainerEntry siteData={siteData}pictures={pictures} setModalOn={setModalOn} picIndex={0} setCurrentPicIndex={setCurrentPicIndex}/>
+      <PhotoContainerEntry siteData={siteData}pictures={pictures} setModalOn={setModalOn} picIndex={1} setCurrentPicIndex={setCurrentPicIndex}/>
+      <PhotoContainerEntry siteData={siteData}pictures={pictures} setModalOn={setModalOn} picIndex={2} setCurrentPicIndex={setCurrentPicIndex}/>
     </PhotoModContainerStyle>
   )
 }
