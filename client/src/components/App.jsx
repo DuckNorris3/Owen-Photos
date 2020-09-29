@@ -19,7 +19,8 @@ const App = () => {
   if (siteData) {
     return (
       <div>
-        <PhotoContainer siteData={siteData} pictures={siteData.pictures} setModalOn={setModalOn}/>
+        <PhotoContainer siteData={siteData} pictures={siteData.pictures} setModalOn={setModalOn}
+        setCurrentPicIndex={setCurrentPicIndex}/>
       </div>
     );
   } else {
