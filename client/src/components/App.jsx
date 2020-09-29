@@ -7,6 +7,8 @@ import axios from 'axios';
 const App = () => {
 
   const [siteData, setSiteData] = useState(null);
+  const [modalOn, setModalOn] = useState(false);
+  const [currentPicIndex, setCurrentPicIndex] = useState(0);
 
   useEffect(() => {
     axios.get('/api/campsite?siteID=5')
@@ -15,10 +17,9 @@ const App = () => {
   }, []);
 
   if (siteData) {
-    console.log('should only fire if siteData has been fetched:', siteData.pictures);
     return (
       <div>
-        <PhotoContainer siteData={siteData} pictures={siteData.pictures}/>
+        <PhotoContainer siteData={siteData} pictures={siteData.pictures} setModalOn={setModalOn}/>
       </div>
     );
   } else {
