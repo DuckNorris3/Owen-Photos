@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
 import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoContainer, InfoContainer, PhotoPlaceHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './styledComponents/CarouselStyledDivs.jsx';
-import { XButton } from './styledComponents/CarouselStyledElements.jsx';
+import { XButton, NavButton, PhotoNumber, HelpfulButton } from './styledComponents/CarouselStyledElements.jsx';
 
 const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCurrentPicIndex, close}) => {
 
@@ -38,8 +38,8 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCu
           <div style={MODAL_STYLE}>
             <ParentContainer>
               <VerticalContainerLeft>
-                93/100
-                <button>&lt;</button>
+                <PhotoNumber>3/5</PhotoNumber>
+                <NavButton onClick={() => console.log('left')}>&lt;</NavButton>
                 <span></span>
               </VerticalContainerLeft>
               <PhotoContainer>
@@ -53,13 +53,13 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCu
                     </UserInfoContainer>
                     <LocationInfoContainer/>
                   </InfoSubcontainerLeft>
-                  <button>Helpful</button>
+                  <HelpfulButton>Helpful&nbsp;&nbsp;&nbsp;3</HelpfulButton>
                 </InfoContainer>
                 <PhotoPlaceHolder />
               </PhotoContainer>
               <VerticalContainerRight>
                 <XButton onClick={close}>X</XButton>
-                <button>&gt;</button>
+                <NavButton onClick={() => console.log('right')}>&gt;</NavButton>
                 <span></span>
               </VerticalContainerRight>
             </ParentContainer>
