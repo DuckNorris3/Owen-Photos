@@ -1,16 +1,13 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
+import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoContainer, InfoContainer, PhotoPlaceHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './CarouselStyledComponents.jsx';
 
 const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCurrentPicIndex, close}) => {
 
   const MODAL_STYLE = {
     position: 'fixed',
-    top: '50%',
-    left: '14%',
-    transform: 'translate(-70%, -70%)',
-    backgroundColor: '#FFF',
-    padding: '50px',
+    padding: '.2% 3%',
     zIndex: 1000
   };
 
@@ -38,8 +35,33 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCu
       <>
         <div style={OVERLAY_STYLE}>
           <div style={MODAL_STYLE}>
-            <button onClick={close}>X</button>
-            {carouselGang}
+            <ParentContainer>
+              <VerticalContainerLeft>
+                93/100
+                <button>&lt;</button>
+                <span></span>
+              </VerticalContainerLeft>
+              <PhotoContainer>
+                <InfoContainer>
+                  <InfoSubcontainerLeft>
+                    <UserInfoContainer>
+                      O&nbsp;&nbsp;&nbsp;
+                      <UserNameDateMiniContainer>
+
+                      </UserNameDateMiniContainer>
+                    </UserInfoContainer>
+                    <LocationInfoContainer/>
+                  </InfoSubcontainerLeft>
+                  <button>Helpful</button>
+                </InfoContainer>
+                <PhotoPlaceHolder />
+              </PhotoContainer>
+              <VerticalContainerRight>
+                <button onClick={close}>X</button>
+                <button>&gt;</button>
+                <span></span>
+              </VerticalContainerRight>
+            </ParentContainer>
           </div>
         </div>
       </>,
@@ -50,3 +72,4 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCu
 }
 
 export default PhotoCarouselModal;
+

@@ -4,7 +4,7 @@ const ParentContainer = styled.div`
   margin: 1% auto;
   display: flex;
   justify-content: space-between;
-  border: 1px solid red;
+  border: 2px solid red;
   width: 95vw;
   height: 95vh;
 `;
@@ -15,7 +15,7 @@ const VerticalContainerLeft = styled.div`
   justify-content: space-between;
   width: 5em;
   align-items: flex-start;
-  border: 1px solid blue;
+  border: 2px solid blue;
 `;
 
 const VerticalContainerRight = styled.div`
@@ -24,7 +24,7 @@ const VerticalContainerRight = styled.div`
   justify-content: space-between;
   width: 5em;
   align-items: flex-end;
-  border: 1px solid blue;
+  border: 2px solid blue;
 `;
 
 const InfoContainer = styled.div`
@@ -32,7 +32,7 @@ const InfoContainer = styled.div`
   margin-top: .5em;
   justify-content: space-between;
   align-items: flex-start;
-  border: 1px solid orange;
+  border: 2px solid orange;
   height: 4em;
   width: 96%;
 `
@@ -40,8 +40,8 @@ const InfoContainer = styled.div`
 const InfoSubcontainerLeft = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
-  height: 100%;
+  border: 2px solid red;
+  height: 98%;
   width: 50%;
   margin-left: 1em;
 `
@@ -49,7 +49,7 @@ const InfoSubcontainerLeft = styled.div`
 const LocationInfoContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  border: 1px solid #333;
+  border: 2px solid #333;
   height: 1em;
   width: 18em;
 `
@@ -58,8 +58,8 @@ const UserInfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  border: 1px solid purple;
-  height: 3em;
+  border: 2px solid purple;
+  height: 2.7em;
   width: 18em;
 `
 
@@ -68,8 +68,8 @@ const UserNameDateMiniContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  border: 1px solid pink;
-  height: 3em;
+  border: 2px solid pink;
+  height: 100%;
   width: 14em;
 `
 
@@ -78,7 +78,7 @@ const PhotoPlaceHolder = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1em;
-  border: 1px solid green;
+  border: 2px solid green;
   height: 80%;
   width: 80%;
 `
@@ -88,7 +88,7 @@ const PhotoContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid green;
+  border: 2px solid green;
   height: 100%;
   width: 65%;
 `;
