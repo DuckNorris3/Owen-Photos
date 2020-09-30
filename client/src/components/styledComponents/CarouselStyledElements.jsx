@@ -9,6 +9,7 @@ const XButton = styled.button`
   width: 20px;
   padding: 5px;
   cursor: pointer;
+  outline: none;
 
   &:hover {
     color: gray;
