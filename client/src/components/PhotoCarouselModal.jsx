@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
-import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoContainer, InfoContainer, PhotoPlaceHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './CarouselStyledComponents.jsx';
+import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoContainer, InfoContainer, PhotoPlaceHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './styledComponents/CarouselStyledDivs.jsx';
 
 const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCurrentPicIndex, close}) => {
 

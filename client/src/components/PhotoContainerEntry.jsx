@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PhotoModContainerStyle, PhotoModImageStyle } from './PhotoModStyledComponents.jsx';
+import { PhotoModContainerStyle, PhotoModImageStyle } from './styledComponents/PhotoModStyledComponents.jsx';
 
 const PhotoContainerEntry = ({siteData, pictures, setModalOn, picIndex, setCurrentPicIndex}) => {
 
