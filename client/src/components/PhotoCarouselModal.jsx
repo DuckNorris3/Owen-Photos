@@ -7,8 +7,8 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCu
   const MODAL_STYLE = {
     position: 'fixed',
     top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    left: '14%',
+    transform: 'translate(-70%, -70%)',
     backgroundColor: '#FFF',
     padding: '50px',
     zIndex: 1000
