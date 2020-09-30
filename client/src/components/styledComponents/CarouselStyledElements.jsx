@@ -4,14 +4,15 @@ const XButton = styled.button`
   background-color: transparent;
   border: none;
   font-family: Arial, sans-serif;
-  color: #EDEDED,
-  font-weight: bold;
-  height: 50px;
-  width: 50px;
+  color: white;
+  height: 20px;
+  width: 20px;
+  padding: 5px;
+  cursor: pointer;
 
-  &hover {
-    color: white;
+  &:hover {
+    color: gray;
   }
 `
 
-export { PhotoModContainerStyle, PhotoModEntryStyle, PhotoModImageStyle };
+export { XButton };

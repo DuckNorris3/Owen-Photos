@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
 import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoContainer, InfoContainer, PhotoPlaceHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './styledComponents/CarouselStyledDivs.jsx';
+import { XButton } from './styledComponents/CarouselStyledElements.jsx';
 
 const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCurrentPicIndex, close}) => {
 
@@ -57,7 +58,7 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCu
                 <PhotoPlaceHolder />
               </PhotoContainer>
               <VerticalContainerRight>
-                <button onClick={close}>X</button>
+                <XButton onClick={close}>X</XButton>
                 <button>&gt;</button>
                 <span></span>
               </VerticalContainerRight>
