@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PhotoModContainerStyle, PhotoModImageStyle } from './styledComponents.jsx';
+import { PhotoModContainerStyle, PhotoModImageStyle } from './PhotoModStyledComponents.jsx';
 
 const PhotoContainerEntry = ({siteData, pictures, setModalOn, picIndex, setCurrentPicIndex}) => {
 
-  const pceClickHandler = () => {
+  const photoClickEntryClickHandler = () => {
     setModalOn(true);
     setCurrentPicIndex(picIndex);
   }
 
   return (
-    <PhotoModImageStyle src={siteData.pictures[picIndex].picUrl} onClick={() => pceClickHandler()}/>
+    <PhotoModImageStyle src={siteData.pictures[picIndex].picUrl} onClick={() => photoClickEntryClickHandler()}/>
   )
 }
 

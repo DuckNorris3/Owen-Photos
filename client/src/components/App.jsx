@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PhotoContainer from './PhotoContainer.jsx';
+import PhotoCarouselModal from './PhotoCarouselModal.jsx';
 import dbImport from '../../lib/dbImport.js';
 import axios from 'axios';
 
@@ -21,6 +22,8 @@ const App = () => {
       <div>
         <PhotoContainer siteData={siteData} pictures={siteData.pictures} setModalOn={setModalOn}
         setCurrentPicIndex={setCurrentPicIndex}/>
+        <PhotoCarouselModal on={modalOn} siteData={siteData} pictures={siteData.pictures} setModalOn={setModalOn}
+        setCurrentPicIndex={setCurrentPicIndex} close={() => setModalOn(false)}></PhotoCarouselModal>
       </div>
     );
   } else {
