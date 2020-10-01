@@ -21,9 +21,9 @@ const App = () => {
     return (
       <div>
         <PhotoContainer siteData={siteData} pictures={siteData.pictures} setModalOn={setModalOn}
-        setCurrentPicIndex={setCurrentPicIndex}/>
+        setCurrentPicIndex={setCurrentPicIndex} currentPicIndex={currentPicIndex}/>
         <PhotoCarouselModal on={modalOn} siteData={siteData} pictures={siteData.pictures} setModalOn={setModalOn}
-        setCurrentPicIndex={setCurrentPicIndex} close={() => setModalOn(false)}></PhotoCarouselModal>
+        setCurrentPicIndex={setCurrentPicIndex} currentPicIndex={currentPicIndex} close={() => setModalOn(false)}></PhotoCarouselModal>
       </div>
     );
   } else {

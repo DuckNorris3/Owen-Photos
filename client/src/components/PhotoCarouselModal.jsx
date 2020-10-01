@@ -1,36 +1,18 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
-import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoContainer, InfoContainer, PhotoHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './styledComponents/CarouselStyledDivs.jsx';
+import moment from 'moment';
+
+import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoAndCaptionContainer, InfoContainer, PhotoHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './styledComponents/CarouselStyledDivs.jsx';
 import { XButton, NavButton, PhotoNumber, HelpfulButton, UserImage, UserName, PostedOn, LocationMarkerImage, LocationText, Photo } from './styledComponents/CarouselStyledElements.jsx';
+import { OVERLAY_STYLE, MODAL_STYLE } from './styledComponents/ModalStyles.jsx';
 
-const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCurrentPicIndex, close}) => {
-
-  const MODAL_STYLE = {
-    position: 'fixed',
-    padding: '.2% 3%',
-    zIndex: 1000
-  };
-
-  const OVERLAY_STYLE = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, .75)',
-    zIndex: 1000
-  };
-
-  let carouselGang = [];
-
-  for (let i = 0; i < 10; i++) {
-    carouselGang.push(<p>Carousel Gang Gang</p>);
-  }
+const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, setCurrentPicIndex, currentPicIndex, close}) => {
 
   if(!on) {
     return null;
   } else {
+    console.log(siteData.pictures[currentPicIndex]);
     const portalContainer = document.getElementById('portal');
     return ReactDom.createPortal(
       <>
@@ -38,29 +20,30 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCu
           <div style={MODAL_STYLE}>
             <ParentContainer>
               <VerticalContainerLeft>
-                <PhotoNumber>3/5</PhotoNumber>
+                <PhotoNumber>{currentPicIndex}/{siteData.pictures.length}</PhotoNumber>
                 <NavButton onClick={() => console.log('left')}>&lt;</NavButton>
                 <span></span>
               </VerticalContainerLeft>
-              <PhotoContainer>
+              <PhotoAndCaptionContainer>
                 <InfoContainer>
                   <InfoSubcontainerLeft>
                     <UserInfoContainer>
-                      <UserImage src="https://obwfec-tenthop.s3.amazonaws.com/ICON7.jpg" />
+                      <UserImage src={siteData.userPic} />
                       <UserNameDateMiniContainer>
-                        <UserName>Owen W.</UserName>
-                        <PostedOn>Posted on August 17th, 2020</PostedOn>
+                        <UserName>{siteData.userName}</UserName>
+                        <PostedOn>Posted on {moment(siteData.postedOn).format('LL')}</PostedOn>
                       </UserNameDateMiniContainer>
                     </UserInfoContainer>
                     <LocationInfoContainer>
-                      <LocationMarkerImage src="https://obwfec-tenthop.s3.amazonaws.com/933644_location_icon.png" />
-                      <LocationText>Beautiful gorgeous campground blah blah blah</LocationText>
+                      <LocationMarkerImage />
+                      <LocationText>{siteData.location}</LocationText>
                     </LocationInfoContainer>
                   </InfoSubcontainerLeft>
-                  <HelpfulButton>Helpful&nbsp;&nbsp;&nbsp;3</HelpfulButton>
+                  <HelpfulButton>Helpful&nbsp;&nbsp;&nbsp;{siteData.pictures[currentPicIndex].helpful}</HelpfulButton>
                 </InfoContainer>
-                <PhotoHolder><Photo src="https://obwfec-tenthop.s3.amazonaws.com/IMG4.jpg"/></PhotoHolder>
-              </PhotoContainer>
+                <PhotoHolder><Photo src={siteData.pictures[currentPicIndex].picUrl}/></PhotoHolder>
+                <LocationText>{siteData.caption}</LocationText>
+              </PhotoAndCaptionContainer>
               <VerticalContainerRight>
                 <XButton onClick={close}>X</XButton>
                 <NavButton onClick={() => console.log('right')}>&gt;</NavButton>

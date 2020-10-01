@@ -102,11 +102,12 @@ const PostedOn = styled.p`
   font-size: 10px;
 `
 
-const LocationMarkerImage = styled.img`
-  width: 9px;
-  height: 12px;
+const LocationMarkerImage = styled.div`
+  width: 6px;
+  height: 9px;
   margin: 0;
   padding: 0;
+  background: url('https://obwfec-tenthop.s3.amazonaws.com/locationmarker-small-transparent.png');
   border: none;
   outline: none;
 `
