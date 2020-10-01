@@ -7,6 +7,8 @@ import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoAn
 import { XButton, NavButton, PhotoNumber, HelpfulButton, UserImage, UserName, PostedOn, LocationMarkerImage, LocationText, Photo } from './styledComponents/CarouselStyledElements.jsx';
 import { OVERLAY_STYLE, MODAL_STYLE } from './styledComponents/ModalStyles.jsx';
 
+import { goLeft, goRight } from '../helper/numberCycle.js'
+
 const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, setCurrentPicIndex, currentPicIndex, close}) => {
 
   if(!on) {
@@ -20,8 +22,8 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, setCurrentPicIn
           <div style={MODAL_STYLE}>
             <ParentContainer>
               <VerticalContainerLeft>
-                <PhotoNumber>{currentPicIndex}/{siteData.pictures.length}</PhotoNumber>
-                <NavButton onClick={() => console.log('left')}>&lt;</NavButton>
+                <PhotoNumber>{currentPicIndex + 1}/{siteData.pictures.length}</PhotoNumber>
+                <NavButton onClick={() => setCurrentPicIndex(goLeft(currentPicIndex, siteData.pictures.length - 1))}>&lt;</NavButton>
                 <span></span>
               </VerticalContainerLeft>
               <PhotoAndCaptionContainer>
@@ -42,11 +44,11 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, setCurrentPicIn
                   <HelpfulButton>Helpful&nbsp;&nbsp;&nbsp;{siteData.pictures[currentPicIndex].helpful}</HelpfulButton>
                 </InfoContainer>
                 <PhotoHolder><Photo src={siteData.pictures[currentPicIndex].picUrl}/></PhotoHolder>
-                <LocationText>{siteData.caption}</LocationText>
+                <LocationText>{siteData.pictures[currentPicIndex].caption}</LocationText>
               </PhotoAndCaptionContainer>
               <VerticalContainerRight>
                 <XButton onClick={close}>X</XButton>
-                <NavButton onClick={() => console.log('right')}>&gt;</NavButton>
+                <NavButton onClick={() => setCurrentPicIndex(goRight(currentPicIndex, siteData.pictures.length - 1))}>&gt;</NavButton>
                 <span></span>
               </VerticalContainerRight>
             </ParentContainer>

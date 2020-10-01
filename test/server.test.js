@@ -44,7 +44,9 @@ it('fetches data in the proper shape from the campsite endpoint', async done => 
   expect(obj).toHaveProperty('userPic');
   expect(obj).toHaveProperty('postedOn');
   expect(obj).toHaveProperty('location');
-  expect(obj).toHaveProperty('caption');
   expect(Array.isArray(obj.pictures)).toBe(true);
+  expect(obj.pictures[0]).toHaveProperty('picUrl');
+  expect(obj.pictures[0]).toHaveProperty('helpful');
+  expect(obj.pictures[0]).toHaveProperty('caption');
   done();
 });

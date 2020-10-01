@@ -30,7 +30,7 @@ const generateCaption = () => {
 }
 
 const generateUserPic = () => {
-  const picNum = generateRandomNumber(0, 37);
+  const picNum = generateRandomNumber(0, 35);
   return `https://obwfec-tenthop.s3.amazonaws.com/ICON${picNum}.jpg`;
 }
 
@@ -53,12 +53,14 @@ const generateLocation = () => {
 }
 
 const pictureObject = (pictureID) => {
+
   const picNum = generateRandomPictureFileNumber();
   const s3picURL = `https://obwfec-tenthop.s3.amazonaws.com/IMG${picNum}.jpg`;
 
   return {
     picUrl: s3picURL,
-    helpful: generateRandomNumber(1, 8)
+    helpful: generateRandomNumber(1, 8),
+    caption: generateCaption()
   }
 }
 
@@ -80,7 +82,6 @@ const generateSeedObject = (siteID) => {
     userPic: generateUserPic(),
     postedOn: generatePostedOn(),
     location: generateLocation(),
-    caption: generateCaption(),
     pictures: generatePictureArray()
   }
 }

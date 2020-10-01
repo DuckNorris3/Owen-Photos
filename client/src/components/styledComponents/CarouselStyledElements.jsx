@@ -66,7 +66,7 @@ const HelpfulButton = styled.button`
   font-weight:bold;
   padding:16px 25px;
   margin: 5px;
-  margin-top: 7px;
+  margin-top: 6px;
   text-decoration:none;
   outline: none;
   text-shadow:0px 1px 0px #2f6627;

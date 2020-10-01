@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 const PhotoModContainerStyle = styled.div`
   display: grid;
-  grid-template-columns: 37% 37% 80%;
-  grid-column-gap: 1.2em;
+  grid-template-columns: 40% 40% 49%;
+  grid-column-gap: 1.1em;
   width: 98%;
-  height: 20em;
+  height: 23em;
   margin: 10px 15px 10px 10px;
   padding: 0;
   overflow: hidden;
