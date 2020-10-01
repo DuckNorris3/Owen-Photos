@@ -7,7 +7,7 @@ const XButton = styled.button`
   color: #DBDBDB;
   height: 20px;
   width: 20px;
-  padding: 5px;
+  padding: 13px;
   cursor: pointer;
   outline: none;
 
