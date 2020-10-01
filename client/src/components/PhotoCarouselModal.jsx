@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
-import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoContainer, InfoContainer, PhotoHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './styledComponents/CarouselStyledDivs.jsx';
+import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoAndCaptionContainer, InfoContainer, PhotoHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './styledComponents/CarouselStyledDivs.jsx';
 import { XButton, NavButton, PhotoNumber, HelpfulButton, UserImage, UserName, PostedOn, LocationMarkerImage, LocationText, Photo } from './styledComponents/CarouselStyledElements.jsx';
 
 const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCurrentPicIndex, close}) => {
@@ -18,7 +18,7 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCu
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, .75)',
+    backgroundColor: 'rgba(0, 0, 0, .89)',
     zIndex: 1000
   };
 
@@ -42,7 +42,7 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCu
                 <NavButton onClick={() => console.log('left')}>&lt;</NavButton>
                 <span></span>
               </VerticalContainerLeft>
-              <PhotoContainer>
+              <PhotoAndCaptionContainer>
                 <InfoContainer>
                   <InfoSubcontainerLeft>
                     <UserInfoContainer>
@@ -53,14 +53,15 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCu
                       </UserNameDateMiniContainer>
                     </UserInfoContainer>
                     <LocationInfoContainer>
-                      <LocationMarkerImage src="https://obwfec-tenthop.s3.amazonaws.com/933644_location_icon.png" />
+                      <LocationMarkerImage />
                       <LocationText>Beautiful gorgeous campground blah blah blah</LocationText>
                     </LocationInfoContainer>
                   </InfoSubcontainerLeft>
                   <HelpfulButton>Helpful&nbsp;&nbsp;&nbsp;3</HelpfulButton>
                 </InfoContainer>
                 <PhotoHolder><Photo src="https://obwfec-tenthop.s3.amazonaws.com/IMG4.jpg"/></PhotoHolder>
-              </PhotoContainer>
+                <LocationText>Blah blah caption</LocationText>
+              </PhotoAndCaptionContainer>
               <VerticalContainerRight>
                 <XButton onClick={close}>X</XButton>
                 <NavButton onClick={() => console.log('right')}>&gt;</NavButton>
