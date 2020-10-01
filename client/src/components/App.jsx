@@ -12,7 +12,7 @@ const App = () => {
   const [currentPicIndex, setCurrentPicIndex] = useState(0);
 
   useEffect(() => {
-    axios.get('/api/campsite?siteID=5')
+    axios.get('/api/campsite?siteID=7')
     .then(res => setSiteData(res.data[0]))
     .catch(err => console.log('Error: ', err));
   }, []);
