@@ -73,12 +73,12 @@ const UserNameDateMiniContainer = styled.div`
   width: 14em;
 `
 
-const PhotoPlaceHolder = styled.div`
+const PhotoHolder = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1em;
-  border: 2px solid green;
+  border: 2px solid yellow;
   height: 80%;
   width: 80%;
 `
@@ -93,4 +93,4 @@ const PhotoContainer = styled.div`
   width: 65%;
 `;
 
-export { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoContainer, InfoContainer, UserInfoContainer, PhotoPlaceHolder, UserNameDateMiniContainer, InfoSubcontainerLeft, LocationInfoContainer };
+export { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoContainer, InfoContainer, UserInfoContainer, PhotoHolder, UserNameDateMiniContainer, InfoSubcontainerLeft, LocationInfoContainer };

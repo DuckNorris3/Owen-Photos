@@ -7,7 +7,7 @@ const XButton = styled.button`
   color: #DBDBDB;
   height: 20px;
   width: 20px;
-  padding: 13px;
+  padding: 11px;
   cursor: pointer;
   outline: none;
 
@@ -78,4 +78,56 @@ const HelpfulButton = styled.button`
   }
 `
 
-export { XButton, NavButton, PhotoNumber, HelpfulButton };
+const UserImage = styled.img`
+  width: 45px;
+  height: 45px;
+  border-radius: 25px;
+`
+
+const UserName = styled.p`
+  margin: 0;
+  padding: 0;
+  padding-top: 2px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  font-size: 23px;
+`
+
+const PostedOn = styled.p`
+  margin: 0;
+  padding: 0;
+  color: gray;
+  font-family: 'Arial', sans-serif;
+  color: gray;
+  font-size: 10px;
+`
+
+const LocationMarkerImage = styled.img`
+  width: 9px;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+`
+
+const LocationText = styled.p`
+  margin: 0;
+  padding: 0;
+  padding-left: 4px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  font-size: 10px;
+`
+
+const Photo = styled.img`
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+`
+
+export { XButton, NavButton, PhotoNumber, HelpfulButton, UserImage, UserName, PostedOn, LocationMarkerImage, LocationText, Photo };

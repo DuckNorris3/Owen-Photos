@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
-import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoContainer, InfoContainer, PhotoPlaceHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './styledComponents/CarouselStyledDivs.jsx';
-import { XButton, NavButton, PhotoNumber, HelpfulButton } from './styledComponents/CarouselStyledElements.jsx';
+import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoContainer, InfoContainer, PhotoHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './styledComponents/CarouselStyledDivs.jsx';
+import { XButton, NavButton, PhotoNumber, HelpfulButton, UserImage, UserName, PostedOn, LocationMarkerImage, LocationText, Photo } from './styledComponents/CarouselStyledElements.jsx';
 
 const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCurrentPicIndex, close}) => {
 
@@ -46,16 +46,20 @@ const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, picIndex, setCu
                 <InfoContainer>
                   <InfoSubcontainerLeft>
                     <UserInfoContainer>
-                      O&nbsp;&nbsp;&nbsp;
+                      <UserImage src="https://obwfec-tenthop.s3.amazonaws.com/ICON7.jpg" />
                       <UserNameDateMiniContainer>
-
+                        <UserName>Owen W.</UserName>
+                        <PostedOn>Posted on August 17th, 2020</PostedOn>
                       </UserNameDateMiniContainer>
                     </UserInfoContainer>
-                    <LocationInfoContainer/>
+                    <LocationInfoContainer>
+                      <LocationMarkerImage src="https://obwfec-tenthop.s3.amazonaws.com/933644_location_icon.png" />
+                      <LocationText>Beautiful gorgeous campground blah blah blah</LocationText>
+                    </LocationInfoContainer>
                   </InfoSubcontainerLeft>
                   <HelpfulButton>Helpful&nbsp;&nbsp;&nbsp;3</HelpfulButton>
                 </InfoContainer>
-                <PhotoPlaceHolder />
+                <PhotoHolder><Photo src="https://obwfec-tenthop.s3.amazonaws.com/IMG4.jpg"/></PhotoHolder>
               </PhotoContainer>
               <VerticalContainerRight>
                 <XButton onClick={close}>X</XButton>
