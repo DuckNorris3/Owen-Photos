@@ -82,6 +82,11 @@ const mockData =  {
   __v: 0
 }
 
+const setModalOnSpy = jest.fn();
+const setModalOn = setModalOnSpy;
+const setCurrentPicIndexSpy = jest.fn();
+const setCurrentPicIndex = setCurrentPicIndexSpy;
+
 describe('sanity check', () => {
   it('should test that true equals true', () => {
     expect(true).toBe(true);
@@ -104,10 +109,6 @@ describe('<PhotoContainer />', () => {
 });
 
 describe('<PhotoContainerEntry />', () => {
-  const setModalOnSpy = jest.fn();
-  const setModalOn = setModalOnSpy;
-  const setCurrentPicIndexSpy = jest.fn();
-  const setCurrentPicIndex = setCurrentPicIndexSpy;
 
   const wrapper = shallow(<PhotoContainerEntry
     siteData={mockData}
@@ -127,5 +128,4 @@ describe('<PhotoContainerEntry />', () => {
     expect(setModalOnSpy).toHaveBeenCalledWith(true);
     expect(setCurrentPicIndexSpy).toHaveBeenCalledWith(1);
   });
-
 });
