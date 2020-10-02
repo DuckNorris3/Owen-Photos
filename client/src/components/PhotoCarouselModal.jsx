@@ -29,17 +29,17 @@ import {
 } from './styledComponents/CarouselStyledElements.jsx';
 
 import {
-  OVERLAY_STYLE,
-  MODAL_STYLE
+  overlayStyle,
+  modalStyle
 } from './styledComponents/ModalStyles.jsx';
 
 import {
   goLeft, goRight
-} from '../helper/numberCycle.js'
+} from '../helper/numberCycle.js';
 
 const PhotoCarouselModal = ({on, siteData, setModalOn, setCurrentPicIndex, currentPicIndex, close}) => {
 
-  if(!on) {
+  if (!on) {
     return null;
   } else {
     const portalContainer = document.getElementById('portal');
@@ -54,10 +54,10 @@ const PhotoCarouselModal = ({on, siteData, setModalOn, setCurrentPicIndex, curre
 
     return ReactDom.createPortal(
       <>
-        <div id="overlaystyle" style={OVERLAY_STYLE}>
-          <div id="modalstyle" style={MODAL_STYLE}>
+        <div id="overlaystyle" style={overlayStyle}>
+          <div id="modalstyle" style={modalStyle}>
             <ParentContainer id="parent">
-              <VerticalContainerLeft id="vertical-container-left">
+              <VerticalContainerLeft    id="vertical-container-left">
                 <PhotoNumber id="photo-number">{currentPicIndex + 1}/{pictures.length}</PhotoNumber>
                 <NavButton
                   id="left-button"

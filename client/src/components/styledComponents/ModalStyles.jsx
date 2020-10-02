@@ -1,10 +1,10 @@
-const MODAL_STYLE = {
+const modalStyle = {
   position: 'fixed',
   padding: '.2% 3%',
   zIndex: 1000
 };
 
-const OVERLAY_STYLE = {
+const overlayStyle = {
   position: 'fixed',
   top: 0,
   left: 0,
@@ -14,4 +14,4 @@ const OVERLAY_STYLE = {
   zIndex: 1000
 };
 
-export { MODAL_STYLE, OVERLAY_STYLE }
+export { modalStyle, overlayStyle }

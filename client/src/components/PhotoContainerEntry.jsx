@@ -9,10 +9,19 @@ const PhotoContainerEntry = ({siteData, setModalOn, picIndex, setCurrentPicIndex
     setCurrentPicIndex(picIndex);
   }
 
-  const { userName, userPic, postedOn, location, pictures } = siteData;
+  const {
+    userName,
+    userPic,
+    postedOn,
+    location,
+    pictures
+  } = siteData;
 
   return (
-    <PhotoModImageStyle src={pictures[picIndex].picUrl} onClick={() => photoClickEntryClickHandler()}/>
+    <PhotoModImageStyle
+      src={pictures[picIndex].picUrl}
+      onClick={() => photoClickEntryClickHandler()}
+    />
   )
 }
 

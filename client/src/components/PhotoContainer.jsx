@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PhotoContainerEntry from './PhotoContainerEntry.jsx';
 import { PhotoModContainerStyle, PhotoModImageStyle } from './styledComponents/PhotoModStyledComponents.jsx';
 
-const PhotoContainer = ({siteData, pictures, setModalOn, setCurrentPicIndex}) => {
+const PhotoContainer = ({siteData, setModalOn, setCurrentPicIndex}) => {
 
   return (
     <PhotoModContainerStyle>
