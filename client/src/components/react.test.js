@@ -13,6 +13,7 @@ import moment from 'moment';
 import App from './App.jsx';
 import PhotoContainer from './PhotoContainer.jsx';
 import PhotoContainerEntry from './PhotoContainerEntry.jsx';
+import PhotoCarouselModal from './PhotoCarouselModal.jsx';
 
 import {
   PhotoModContainerStyle,
@@ -109,7 +110,6 @@ describe('<PhotoContainer />', () => {
 });
 
 describe('<PhotoContainerEntry />', () => {
-
   const wrapper = shallow(<PhotoContainerEntry
     siteData={mockData}
     setModalOn={setModalOn}
@@ -128,4 +128,68 @@ describe('<PhotoContainerEntry />', () => {
     expect(setModalOnSpy).toHaveBeenCalledWith(true);
     expect(setCurrentPicIndexSpy).toHaveBeenCalledWith(1);
   });
+});
+
+describe('<PhotoCarouselModal />', () => {
+  let component;
+
+  const modalRoot = global.document.createElement('div');
+  modalRoot.setAttribute('id', 'portal');
+  const body = global.document.querySelector('body');
+  body.appendChild(modalRoot);
+
+  const closeSpy = jest.fn();
+  const close = closeSpy;
+
+  component = mount(<PhotoCarouselModal
+    on={true}
+    siteData={mockData}
+    setModalOn={setModalOn}
+    setCurrentPicIndex={setCurrentPicIndex}
+    currentPicIndex={1}
+    close={close}
+  />);
+
+  let modal = component.find('#modalstyle');
+  let overlay = component.find('#overlaystyle');
+  let leftButton = component.find('#left-button');
+  let rightButton = component.find('#right-button');
+  let xButton = component.find(XButton);
+
+  it('should render the modal and the overlay', () => {
+    expect(modal).toBeTruthy();
+    expect(overlay).toBeTruthy();
+  });
+
+  it('should render all the appropriate styled components', () =>  {
+    expect(component.find(ParentContainer)).toBeTruthy();
+    expect(component.find(VerticalContainerLeft)).toBeTruthy();
+    expect(component.find(PhotoNumber)).toBeTruthy();
+    expect(leftButton).toBeTruthy();
+    expect(component.find(rightButton)).toBeTruthy();
+    expect(component.find(PhotoAndCaptionContainer)).toBeTruthy();
+    expect(component.find(InfoContainer)).toBeTruthy();
+    expect(component.find(InfoSubcontainerLeft)).toBeTruthy();
+    expect(component.find(UserInfoContainer)).toBeTruthy();
+    expect(component.find(UserImage)).toBeTruthy();
+    expect(component.find(UserNameDateMiniContainer)).toBeTruthy();
+    expect(component.find(UserName)).toBeTruthy();
+    expect(component.find(PostedOn)).toBeTruthy();
+    expect(component.find(LocationInfoContainer)).toBeTruthy();
+    expect(component.find(LocationMarkerImage)).toBeTruthy();
+    expect(component.find(LocationText)).toBeTruthy();
+    expect(component.find(HelpfulButton)).toBeTruthy();
+    expect(component.find(PhotoHolder)).toBeTruthy();
+    expect(component.find(LocationText)).toBeTruthy();
+    expect(component.find(VerticalContainerRight)).toBeTruthy();
+    expect(xButton).toBeTruthy();
+  });
+
+  it('should close when the X button has been clicked', () => {
+    expect(closeSpy).not.toHaveBeenCalled();
+    xButton.simulate('click');
+    expect(closeSpy).toHaveBeenCalled();
+  });
+
+  component.unmount();
 });
