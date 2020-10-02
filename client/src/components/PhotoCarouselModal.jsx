@@ -3,52 +3,95 @@ import ReactDom from 'react-dom';
 import styled from 'styled-components';
 import moment from 'moment';
 
-import { ParentContainer, VerticalContainerLeft, VerticalContainerRight, PhotoAndCaptionContainer, InfoContainer, PhotoHolder, UserNameDateMiniContainer, UserInfoContainer, InfoSubcontainerLeft, LocationInfoContainer } from './styledComponents/CarouselStyledDivs.jsx';
-import { XButton, NavButton, PhotoNumber, HelpfulButton, UserImage, UserName, PostedOn, LocationMarkerImage, LocationText, Photo } from './styledComponents/CarouselStyledElements.jsx';
-import { OVERLAY_STYLE, MODAL_STYLE } from './styledComponents/ModalStyles.jsx';
+import {
+  ParentContainer,
+  VerticalContainerLeft,
+  VerticalContainerRight,
+  PhotoAndCaptionContainer,
+  InfoContainer, PhotoHolder,
+  UserNameDateMiniContainer,
+  UserInfoContainer,
+  InfoSubcontainerLeft,
+  LocationInfoContainer
+} from './styledComponents/CarouselStyledDivs.jsx';
 
-import { goLeft, goRight } from '../helper/numberCycle.js'
+import {
+  XButton,
+  NavButton,
+  PhotoNumber,
+  HelpfulButton,
+  UserImage,
+  UserName,
+  PostedOn,
+  LocationMarkerImage,
+  LocationText,
+  Photo
+} from './styledComponents/CarouselStyledElements.jsx';
 
-const PhotoCarouselModal = ({on, siteData, pictures, setModalOn, setCurrentPicIndex, currentPicIndex, close}) => {
+import {
+  OVERLAY_STYLE,
+  MODAL_STYLE
+} from './styledComponents/ModalStyles.jsx';
+
+import {
+  goLeft, goRight
+} from '../helper/numberCycle.js'
+
+const PhotoCarouselModal = ({on, siteData, setModalOn, setCurrentPicIndex, currentPicIndex, close}) => {
 
   if(!on) {
     return null;
   } else {
-    console.log(siteData.pictures[currentPicIndex]);
     const portalContainer = document.getElementById('portal');
+
+    const {
+      userName,
+      userPic,
+      postedOn,
+      location,
+      pictures
+    } = siteData;
+
     return ReactDom.createPortal(
       <>
-        <div style={OVERLAY_STYLE}>
-          <div style={MODAL_STYLE}>
-            <ParentContainer>
-              <VerticalContainerLeft>
-                <PhotoNumber>{currentPicIndex + 1}/{siteData.pictures.length}</PhotoNumber>
-                <NavButton onClick={() => setCurrentPicIndex(goLeft(currentPicIndex, siteData.pictures.length - 1))}>&lt;</NavButton>
+        <div id="overlaystyle" style={OVERLAY_STYLE}>
+          <div id="modalstyle" style={MODAL_STYLE}>
+            <ParentContainer id="parent">
+              <VerticalContainerLeft id="vertical-container-left">
+                <PhotoNumber id="photo-number">{currentPicIndex + 1}/{pictures.length}</PhotoNumber>
+                <NavButton
+                  id="left-button"
+                  onClick={() => setCurrentPicIndex(goLeft(currentPicIndex, pictures.length - 1))}>&lt;
+                </NavButton>
                 <span></span>
               </VerticalContainerLeft>
-              <PhotoAndCaptionContainer>
+
+              <PhotoAndCaptionContainer id="photo-and-caption">
                 <InfoContainer>
                   <InfoSubcontainerLeft>
                     <UserInfoContainer>
-                      <UserImage src={siteData.userPic} />
+                      <UserImage src={userPic} />
                       <UserNameDateMiniContainer>
-                        <UserName>{siteData.userName}</UserName>
-                        <PostedOn>Posted on {moment(siteData.postedOn).format('LL')}</PostedOn>
+                        <UserName>{userName}</UserName>
+                        <PostedOn>Posted on {moment(postedOn).format('LL')}</PostedOn>
                       </UserNameDateMiniContainer>
                     </UserInfoContainer>
-                    <LocationInfoContainer>
+                    <LocationInfoContainer id="location-info">
                       <LocationMarkerImage />
-                      <LocationText>{siteData.location}</LocationText>
+                      <LocationText id="location-text">{location}</LocationText>
                     </LocationInfoContainer>
                   </InfoSubcontainerLeft>
-                  <HelpfulButton>Helpful&nbsp;&nbsp;&nbsp;{siteData.pictures[currentPicIndex].helpful}</HelpfulButton>
+                  <HelpfulButton id="helpful">Helpful&nbsp;&nbsp;&nbsp;{pictures[currentPicIndex].helpful}</HelpfulButton>
                 </InfoContainer>
-                <PhotoHolder><Photo src={siteData.pictures[currentPicIndex].picUrl}/></PhotoHolder>
-                <LocationText>{siteData.pictures[currentPicIndex].caption}</LocationText>
+                <PhotoHolder id="photo-holder"><Photo src={pictures[currentPicIndex].picUrl}/></PhotoHolder>
+                <LocationText id="location">{pictures[currentPicIndex].caption}</LocationText>
               </PhotoAndCaptionContainer>
-              <VerticalContainerRight>
-                <XButton onClick={close}>X</XButton>
-                <NavButton onClick={() => setCurrentPicIndex(goRight(currentPicIndex, siteData.pictures.length - 1))}>&gt;</NavButton>
+
+              <VerticalContainerRight id="vertical-container-right">
+                <XButton id="x" onClick={close}>X</XButton>
+                <NavButton
+                  id="right-button"
+                  onClick={() => setCurrentPicIndex(goRight(currentPicIndex, pictures.length - 1))}>&gt;</NavButton>
                 <span></span>
               </VerticalContainerRight>
             </ParentContainer>

@@ -7,9 +7,21 @@ const PhotoContainer = ({siteData, pictures, setModalOn, setCurrentPicIndex}) =>
 
   return (
     <PhotoModContainerStyle>
-      <PhotoContainerEntry siteData={siteData}pictures={pictures} setModalOn={setModalOn} picIndex={0} setCurrentPicIndex={setCurrentPicIndex}/>
-      <PhotoContainerEntry siteData={siteData}pictures={pictures} setModalOn={setModalOn} picIndex={1} setCurrentPicIndex={setCurrentPicIndex}/>
-      <PhotoContainerEntry siteData={siteData}pictures={pictures} setModalOn={setModalOn} picIndex={2} setCurrentPicIndex={setCurrentPicIndex}/>
+      <PhotoContainerEntry
+        siteData={siteData}
+        setModalOn={setModalOn}
+        picIndex={0}
+        setCurrentPicIndex={setCurrentPicIndex}/>
+      <PhotoContainerEntry
+        siteData={siteData}
+        setModalOn={setModalOn}
+        picIndex={1}
+        setCurrentPicIndex={setCurrentPicIndex}/>
+      <PhotoContainerEntry
+        siteData={siteData}
+        setModalOn={setModalOn}
+        picIndex={2}
+        setCurrentPicIndex={setCurrentPicIndex}/>
     </PhotoModContainerStyle>
   )
 }
