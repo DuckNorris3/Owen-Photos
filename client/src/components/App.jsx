@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PhotoContainer from './PhotoContainer.jsx';
 import PhotoCarouselModal from './PhotoCarouselModal.jsx';
-import dbImport from '../../lib/dbImport.js';
 import axios from 'axios';
 
 const App = () => {
@@ -20,10 +19,18 @@ const App = () => {
   if (siteData) {
     return (
       <div>
-        <PhotoContainer siteData={siteData} pictures={siteData.pictures} setModalOn={setModalOn}
-        setCurrentPicIndex={setCurrentPicIndex} currentPicIndex={currentPicIndex}/>
-        <PhotoCarouselModal on={modalOn} siteData={siteData} pictures={siteData.pictures} setModalOn={setModalOn}
-        setCurrentPicIndex={setCurrentPicIndex} currentPicIndex={currentPicIndex} close={() => setModalOn(false)}></PhotoCarouselModal>
+        <PhotoContainer
+          siteData={siteData}
+          setModalOn={setModalOn}
+          setCurrentPicIndex={setCurrentPicIndex} currentPicIndex={currentPicIndex}
+        />
+        <PhotoCarouselModal
+          on={modalOn}
+          siteData={siteData}
+          setModalOn={setModalOn}
+          setCurrentPicIndex={setCurrentPicIndex} currentPicIndex={currentPicIndex}
+          close={() => setModalOn(false)}
+        />
       </div>
     );
   } else {
@@ -31,7 +38,7 @@ const App = () => {
       <div>
         Loading data...
       </div>
-    )
+    );
   }
 }
 
