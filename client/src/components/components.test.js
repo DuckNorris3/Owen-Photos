@@ -150,12 +150,12 @@ describe('<PhotoCarouselModal />', () => {
     close={close}
   />);
 
-  let modal = component.find('#modalstyle');
-  let overlay = component.find('#overlaystyle');
-  let leftButton = component.findWhere(n => n.type() === 'button' && n.contains('<'));
-  let rightButton = component.findWhere(n => n.type() === 'button' && n.contains('>'));
-  let xButton = component.find(XButton);
-  let navButton = component.find(NavButton);
+  const modal = component.find('#modalstyle');
+  const overlay = component.find('#overlaystyle');
+  const leftButton = component.findWhere(n => n.type() === 'button' && n.contains('<'));
+  const rightButton = component.findWhere(n => n.type() === 'button' && n.contains('>'));
+  const xButton = component.find(XButton);
+  const navButton = component.find(NavButton);
 
   it('should render the modal and the overlay', () => {
     expect(modal).toBeTruthy();
