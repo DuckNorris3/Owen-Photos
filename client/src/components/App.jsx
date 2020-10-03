@@ -7,30 +7,13 @@ import axios from 'axios';
 const App = () => {
 
   const getFromDB = () => {
-    axios.get('/api/campsite?siteID=7')
+    axios.get('/api/campsite?siteID=3')
       .then(res => setSiteData(res.data[0]))
       .catch(err => console.log('Error: ', err));
   }
 
-  const incrementHelpfulInDB = () => {
-    const testPicArray = [
-      {
-        picUrl: 'https://obwfec-tenthop.s3.amazonaws.com/IMG30.jpg',
-        helpful: 3,
-        caption: 'Nobis nesciunt impedit qui provident voluptates cum quo a.'
-      },
-      {
-        picUrl: 'https://obwfec-tenthop.s3.amazonaws.com/IMG6.jpg',
-        helpful: 4,
-        caption: 'Aut veritatis aliquam ut ut.'
-      },
-      {
-        picUrl: 'https://obwfec-tenthop.s3.amazonaws.com/IMG21.jpg',
-        helpful: 2,
-        caption: 'Laborum eligendi aut sit officia voluptatem.'
-      }
-    ];
-    axios.patch('/api/campsite?siteID=10', {newPicArray: testPicArray})
+  const incrementHelpfulInDB = (siteID, picArray) => {
+    axios.patch(`/api/campsite?siteID=${siteID}`, {newPicArray: picArray})
       .then(res => getFromDB())
       .catch(err => {
         console.log('ERROR: ', err);
@@ -38,17 +21,16 @@ const App = () => {
       });
   }
 
-  const incrementHelpful = () => {
-    let newSiteData = siteData;
-    newSiteData.pictures[currentPicIndex].helpful = newSiteData.pictures[currentPicIndex].helpful + 1;
-    setSiteData(newSiteData);
-  }
 
   const [siteData, setSiteData] = useState(null);
   const [modalOn, setModalOn] = useState(false);
   const [currentPicIndex, setCurrentPicIndex] = useState(0);
 
-
+  const incrementHelpful = () => {
+    let newSiteData = siteData;
+    newSiteData.pictures[currentPicIndex].helpful = newSiteData.pictures[currentPicIndex].helpful + 1;
+    incrementHelpfulInDB(siteData.siteID, newSiteData.pictures);
+  }
 
   useEffect(() => {
     getFromDB();

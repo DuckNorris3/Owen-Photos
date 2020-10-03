@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
 import moment from 'moment';
@@ -59,6 +59,10 @@ const PhotoCarouselModal = ({
       pictures
     } = siteData;
 
+    const handleHelpfulClick = () => {
+      incrementHelpful();
+    }
+
     return ReactDom.createPortal(
       <>
         <div id="overlaystyle" style={overlayStyle}>
@@ -88,7 +92,7 @@ const PhotoCarouselModal = ({
                       <LocationText id="location-text">{location}</LocationText>
                     </LocationInfoContainer>
                   </InfoSubcontainerLeft>
-                  <HelpfulButton id="helpful" onClick={incrementHelpful}>Helpful&nbsp;&nbsp;&nbsp;{pictures[currentPicIndex].helpful}</HelpfulButton>
+                  <HelpfulButton id="helpful" onClick={handleHelpfulClick}>Helpful&nbsp;&nbsp;&nbsp;{pictures[currentPicIndex].helpful}</HelpfulButton>
                 </InfoContainer>
                 <PhotoHolder id="photo-holder"><Photo src={pictures[currentPicIndex].picUrl}/></PhotoHolder>
                 <LocationText id="location">{pictures[currentPicIndex].caption}</LocationText>
