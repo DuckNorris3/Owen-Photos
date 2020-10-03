@@ -88,12 +88,6 @@ const setModalOn = setModalOnSpy;
 const setCurrentPicIndexSpy = jest.fn();
 const setCurrentPicIndex = setCurrentPicIndexSpy;
 
-describe('sanity check', () => {
-  it('should test that true equals true', () => {
-    expect(true).toBe(true);
-  });
-});
-
 describe('<App />', () => {
   it('should render a PhotoContainer component', () => {
     const wrapper = shallow(<App />);
