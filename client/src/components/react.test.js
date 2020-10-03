@@ -155,6 +155,7 @@ describe('<PhotoCarouselModal />', () => {
   let leftButton = component.find('#left-button');
   let rightButton = component.find('#right-button');
   let xButton = component.find(XButton);
+  let navButton = component.find(NavButton);
 
   it('should render the modal and the overlay', () => {
     expect(modal).toBeTruthy();
@@ -189,6 +190,12 @@ describe('<PhotoCarouselModal />', () => {
     expect(closeSpy).not.toHaveBeenCalled();
     xButton.simulate('click');
     expect(closeSpy).toHaveBeenCalled();
+  });
+
+  it('should run setCurrentPicIndex when a nav button has been clicked', () => {
+    expect(setCurrentPicIndexSpy).toHaveBeenCalledTimes(1);
+    NavButton.first().simulate('click');
+    expect(setCurrentPicIndexSpy).toHaveBeenCalledTimes(2);
   });
 
   component.unmount();
