@@ -6,11 +6,6 @@ const app = require('../server/app.js');
 const supertest = require('supertest');
 const request = supertest(app);
 
-it('checks to see if the test suite is working', () => {
-  const foo = 2;
-  expect(foo).toBe(2);
-});
-
 it('queries the /campsites endpoint successfully', async done => {
   const response = await request.get('/api/campsites');
 
