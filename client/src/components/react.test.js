@@ -152,8 +152,8 @@ describe('<PhotoCarouselModal />', () => {
 
   let modal = component.find('#modalstyle');
   let overlay = component.find('#overlaystyle');
-  let leftButton = component.find('#left-button');
-  let rightButton = component.find('#right-button');
+  let leftButton = component.findWhere(n => n.type() === 'button' && n.contains('<'));
+  let rightButton = component.findWhere(n => n.type() === 'button' && n.contains('>'));
   let xButton = component.find(XButton);
   let navButton = component.find(NavButton);
 
@@ -192,10 +192,18 @@ describe('<PhotoCarouselModal />', () => {
     expect(closeSpy).toHaveBeenCalled();
   });
 
-  it('should run setCurrentPicIndex when a nav button has been clicked', () => {
+  it('should run setCurrentPicIndex when the left button has been clicked', () => {
     expect(setCurrentPicIndexSpy).toHaveBeenCalledTimes(1);
-    NavButton.first().simulate('click');
+    leftButton.simulate('click');
     expect(setCurrentPicIndexSpy).toHaveBeenCalledTimes(2);
+    expect(setCurrentPicIndexSpy).toHaveBeenCalledWith(0);
+  });
+
+  it('should run setCurrentPicIndex when the right button has been clicked', () => {
+    expect(setCurrentPicIndexSpy).toHaveBeenCalledTimes(2);
+    rightButton.simulate('click');
+    expect(setCurrentPicIndexSpy).toHaveBeenCalledTimes(3);
+    expect(setCurrentPicIndexSpy).toHaveBeenCalledWith(2);
   });
 
   component.unmount();
