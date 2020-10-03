@@ -33,4 +33,15 @@ app.get('/api/campsite/', (req, res) => {
   });
 });
 
+app.patch('/api/campsite', (req, res) => {
+  PhotoSiteController.updatePicArray(req.query.siteID, req.body.newPicArray, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(data);
+    }
+  });
+
+})
+
 module.exports = app;
