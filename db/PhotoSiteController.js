@@ -20,5 +20,20 @@ const getBySiteId = (inputSiteId, cb) => {
   });
 }
 
+const updatePicArray = (inputSiteID, picArray, cb) => {
+  const filter = { siteID: inputSiteID };
+  const update = { pictures: picArray }
+
+  PhotoSiteModel.findOneAndUpdate(filter, update, (err, doc) => {
+    if (err) {
+      cb(err);
+    } else {
+      cb(null, doc);
+    }
+  });
+}
+
 module.exports.getAll = getAll;
 module.exports.getBySiteId = getBySiteId;
+module.exports.updatePicArray = updatePicArray;
+

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
 import moment from 'moment';
@@ -37,7 +37,14 @@ import {
   goLeft, goRight
 } from '../helper/numberCycle.js';
 
-const PhotoCarouselModal = ({on, siteData, setModalOn, setCurrentPicIndex, currentPicIndex, close}) => {
+const PhotoCarouselModal = ({
+  on,
+  siteData,
+  setModalOn,
+  setCurrentPicIndex,
+  currentPicIndex,
+  incrementHelpful,
+  close}) => {
 
   if (!on) {
     return null;
@@ -51,6 +58,10 @@ const PhotoCarouselModal = ({on, siteData, setModalOn, setCurrentPicIndex, curre
       location,
       pictures
     } = siteData;
+
+    const handleHelpfulClick = () => {
+      incrementHelpful();
+    }
 
     return ReactDom.createPortal(
       <>
@@ -81,7 +92,7 @@ const PhotoCarouselModal = ({on, siteData, setModalOn, setCurrentPicIndex, curre
                       <LocationText id="location-text">{location}</LocationText>
                     </LocationInfoContainer>
                   </InfoSubcontainerLeft>
-                  <HelpfulButton id="helpful">Helpful&nbsp;&nbsp;&nbsp;{pictures[currentPicIndex].helpful}</HelpfulButton>
+                  <HelpfulButton id="helpful" onClick={handleHelpfulClick}>Helpful&nbsp;&nbsp;&nbsp;{pictures[currentPicIndex].helpful}</HelpfulButton>
                 </InfoContainer>
                 <PhotoHolder id="photo-holder"><Photo src={pictures[currentPicIndex].picUrl}/></PhotoHolder>
                 <LocationText id="location">{pictures[currentPicIndex].caption}</LocationText>

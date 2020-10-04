@@ -6,14 +6,34 @@ import axios from 'axios';
 
 const App = () => {
 
+  const getFromDB = () => {
+    axios.get('/api/campsite?siteID=3')
+      .then(res => setSiteData(res.data[0]))
+      .catch(err => console.log('Error: ', err));
+  }
+
+  const incrementHelpfulInDB = (siteID, picArray) => {
+    axios.patch(`/api/campsite?siteID=${siteID}`, {newPicArray: picArray})
+      .then(res => getFromDB())
+      .catch(err => {
+        console.log('ERROR: ', err);
+        getFromDB();
+      });
+  }
+
+
   const [siteData, setSiteData] = useState(null);
   const [modalOn, setModalOn] = useState(false);
   const [currentPicIndex, setCurrentPicIndex] = useState(0);
 
+  const incrementHelpful = () => {
+    let newSiteData = siteData;
+    newSiteData.pictures[currentPicIndex].helpful = newSiteData.pictures[currentPicIndex].helpful + 1;
+    incrementHelpfulInDB(siteData.siteID, newSiteData.pictures);
+  }
+
   useEffect(() => {
-    axios.get('/api/campsite?siteID=7')
-    .then(res => setSiteData(res.data[0]))
-    .catch(err => console.log('Error: ', err));
+    getFromDB();
   }, []);
 
   if (siteData) {
@@ -29,6 +49,7 @@ const App = () => {
           siteData={siteData}
           setModalOn={setModalOn}
           setCurrentPicIndex={setCurrentPicIndex} currentPicIndex={currentPicIndex}
+          incrementHelpful={incrementHelpful}
           close={() => setModalOn(false)}
         />
       </div>

@@ -135,12 +135,16 @@ describe('<PhotoCarouselModal />', () => {
   const closeSpy = jest.fn();
   const close = closeSpy;
 
+  const incrementHelpfulSpy = jest.fn();
+  const incrementHelpful = incrementHelpfulSpy;
+
   component = mount(<PhotoCarouselModal
     on={true}
     siteData={mockData}
     setModalOn={setModalOn}
     setCurrentPicIndex={setCurrentPicIndex}
     currentPicIndex={1}
+    incrementHelpful={incrementHelpful}
     close={close}
   />);
 
@@ -150,6 +154,7 @@ describe('<PhotoCarouselModal />', () => {
   const rightButton = component.findWhere(n => n.type() === 'button' && n.contains('>'));
   const xButton = component.find(XButton);
   const navButton = component.find(NavButton);
+  const helpfulButton = component.find(HelpfulButton);
 
   it('should render the modal and the overlay', () => {
     expect(modal).toBeTruthy();
@@ -173,7 +178,7 @@ describe('<PhotoCarouselModal />', () => {
     expect(component.find(LocationInfoContainer)).toBeTruthy();
     expect(component.find(LocationMarkerImage)).toBeTruthy();
     expect(component.find(LocationText)).toBeTruthy();
-    expect(component.find(HelpfulButton)).toBeTruthy();
+    expect(helpfulButton).toBeTruthy();
     expect(component.find(PhotoHolder)).toBeTruthy();
     expect(component.find(LocationText)).toBeTruthy();
     expect(component.find(VerticalContainerRight)).toBeTruthy();
@@ -186,18 +191,24 @@ describe('<PhotoCarouselModal />', () => {
     expect(closeSpy).toHaveBeenCalled();
   });
 
-  it('should run setCurrentPicIndex when the left button has been clicked', () => {
+  it('should call setCurrentPicIndex when the left button has been clicked', () => {
     expect(setCurrentPicIndexSpy).toHaveBeenCalledTimes(1);
     leftButton.simulate('click');
     expect(setCurrentPicIndexSpy).toHaveBeenCalledTimes(2);
     expect(setCurrentPicIndexSpy).toHaveBeenCalledWith(0);
   });
 
-  it('should run setCurrentPicIndex when the right button has been clicked', () => {
+  it('should call setCurrentPicIndex when the right button has been clicked', () => {
     expect(setCurrentPicIndexSpy).toHaveBeenCalledTimes(2);
     rightButton.simulate('click');
     expect(setCurrentPicIndexSpy).toHaveBeenCalledTimes(3);
     expect(setCurrentPicIndexSpy).toHaveBeenCalledWith(2);
+  });
+
+  it('should call incrementHelpful when the Helpful button has been clicked', () => {
+    expect(incrementHelpfulSpy).not.toHaveBeenCalled();
+    helpfulButton.simulate('click');
+    expect(incrementHelpfulSpy).toHaveBeenCalled();
   });
 
   component.unmount();
