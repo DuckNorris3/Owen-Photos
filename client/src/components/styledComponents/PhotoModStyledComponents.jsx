@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 const PhotoModContainerStyle = styled.div`
   display: grid;
-  grid-template-columns: 40% 40% 49%;
+  grid-template-columns: 40% 40% 52%;
   grid-column-gap: 1.1em;
-  width: 98%;
-  height: 23em;
-  margin: 10px 15px 10px 10px;
+  width: 99%;
+  height: 34em;
+  margin: 10px 12px 10px 7px;
+  margin-right: 5px;
   padding: 0;
   overflow: hidden;
 `;
