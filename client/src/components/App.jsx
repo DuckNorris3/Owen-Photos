@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PhotoContainer from './PhotoContainer.jsx';
 import PhotoCarouselModal from './PhotoCarouselModal.jsx';
+import loaderStyle from './styledComponents/LoaderStyles.jsx';
 import axios from 'axios';
 
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
       .catch(err => console.log('Error: ', err));
   }
 
-  const incrementHelpfulInDB = (siteID, picArray) => {
+  const pushHelpfulToServer = (siteID, picArray) => {
     axios.patch(`/api/campsite?siteID=${siteID}`, {newPicArray: picArray})
       .then(res => getSiteById(siteID))
       .catch(err => {
@@ -21,7 +22,6 @@ const App = () => {
       });
   }
 
-
   const [siteData, setSiteData] = useState(null);
   const [modalOn, setModalOn] = useState(false);
   const [currentPicIndex, setCurrentPicIndex] = useState(0);
@@ -29,7 +29,7 @@ const App = () => {
   const incrementHelpful = () => {
     let newSiteData = siteData;
     newSiteData.pictures[currentPicIndex].helpful = newSiteData.pictures[currentPicIndex].helpful + 1;
-    incrementHelpfulInDB(siteData.siteID, newSiteData.pictures);
+    pushHelpfulToServer(siteData.siteID, newSiteData.pictures);
   }
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const App = () => {
   } else {
     return (
       <div>
-        Loading data...
+        <img style={loaderStyle} src="https://obwfec-tenthop.s3.amazonaws.com/loader-icon.gif"></img>
       </div>
     );
   }
