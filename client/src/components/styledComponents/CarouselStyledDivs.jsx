@@ -13,6 +13,7 @@ const VerticalContainerLeft = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 5em;
+  margin-right: 42px;
   align-items: flex-start;
 `;
 
@@ -44,7 +45,7 @@ const InfoSubcontainerLeft = styled.div`
 const LocationInfoContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  margin-top: 5px;
+  margin-top: 12px;
   height: 1em;
   width: 18em;
 `
@@ -70,8 +71,8 @@ const PhotoHolder = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0.85em;
-  margin-bottom: 15px;
+  margin-top: 2.4em;
+  margin-bottom: 20px;
   height: 80%;
   width: 80%;
 `
