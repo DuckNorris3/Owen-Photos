@@ -25,6 +25,7 @@ import {
   PostedOn,
   LocationMarkerImage,
   LocationText,
+  CaptionText,
   Photo
 } from './styledComponents/CarouselStyledElements.jsx';
 
@@ -49,7 +50,7 @@ const PhotoCarouselModal = ({
   if (!on) {
     return null;
   } else {
-    const portalContainer = document.getElementById('portal');
+    const portalContainer = document.getElementById('photo-carousel-modal');
 
     const {
       userName,
@@ -95,7 +96,7 @@ const PhotoCarouselModal = ({
                   <HelpfulButton id="helpful" onClick={handleHelpfulClick}>Helpful&nbsp;&nbsp;&nbsp;{pictures[currentPicIndex].helpful}</HelpfulButton>
                 </InfoContainer>
                 <PhotoHolder id="photo-holder"><Photo src={pictures[currentPicIndex].picUrl}/></PhotoHolder>
-                <LocationText id="location">{pictures[currentPicIndex].caption}</LocationText>
+                <CaptionText id="location">{pictures[currentPicIndex].caption}</CaptionText>
               </PhotoAndCaptionContainer>
 
               <VerticalContainerRight id="vertical-container-right">

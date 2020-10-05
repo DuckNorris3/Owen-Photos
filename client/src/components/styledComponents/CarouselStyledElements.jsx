@@ -5,9 +5,11 @@ const XButton = styled.button`
   border: none;
   font-family: Arial, sans-serif;
   color: #DBDBDB;
+  font-size: 22px;
   height: 20px;
   width: 20px;
   padding: 11px;
+  margin-right: 14px;
   cursor: pointer;
   outline: none;
 
@@ -20,7 +22,7 @@ const NavButton = styled.button`
   background-color: transparent;
   border: none;
   font-family: Arial, sans-serif;
-  font-size: 30px;
+  font-size: 34px;
   color: #DBDBDB;
   height: 40px;
   width: 40px;
@@ -35,7 +37,7 @@ const NavButton = styled.button`
     color: white;
     height: 42px;
     width: 42px;
-    font-size: 32px;
+    font-size: 37px;
     padding-bottom: 52px;
     transition: width .1s, height .1s, font-size .1s, padding-bottom .1s;
   }
@@ -43,11 +45,13 @@ const NavButton = styled.button`
 
 const PhotoNumber = styled.p`
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 0.6px;
   word-spacing: 2px;
   color: #FFFFFF;
   margin: 0;
+  margin-top: 10px;
+  margin-right: 10px;
   padding: 6px;
   font-weight: 200;
   text-decoration: none;
@@ -62,9 +66,9 @@ const HelpfulButton = styled.button`
   cursor:pointer;
   color:#ffffff;
   font-family:Arial;
-  font-size:13px;
+  font-size:18px;
   font-weight:bold;
-  padding:16px 25px;
+  padding:18px 27px;
   margin: 5px;
   margin-top: 6px;
   text-decoration:none;
@@ -90,7 +94,7 @@ const UserName = styled.p`
   padding-top: 2px;
   color: white;
   font-family: 'Arial', sans-serif;
-  font-size: 23px;
+  font-size: 25px;
 `
 
 const PostedOn = styled.p`
@@ -99,15 +103,16 @@ const PostedOn = styled.p`
   color: gray;
   font-family: 'Arial', sans-serif;
   color: gray;
-  font-size: 10px;
+  font-size: 14px;
 `
 
 const LocationMarkerImage = styled.div`
-  width: 6px;
-  height: 9px;
+  width: 10px;
+  height: 13px;
   margin: 0;
   padding: 0;
   background: url('https://obwfec-tenthop.s3.amazonaws.com/locationmarker-small-transparent.png');
+  background-size: cover;
   border: none;
   outline: none;
 `
@@ -119,7 +124,17 @@ const LocationText = styled.p`
   color: white;
   font-family: 'Arial', sans-serif;
   color: white;
-  font-size: 10px;
+  font-size: 14px;
+`
+
+const CaptionText = styled.p`
+  margin: 0;
+  padding: 0;
+  padding-left: 4px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  font-size: 16px;
 `
 
 const Photo = styled.img`
@@ -131,4 +146,13 @@ const Photo = styled.img`
   outline: none;
 `
 
-export { XButton, NavButton, PhotoNumber, HelpfulButton, UserImage, UserName, PostedOn, LocationMarkerImage, LocationText, Photo };
+export { XButton,
+  NavButton,
+  PhotoNumber,
+  HelpfulButton,
+  UserImage,
+  UserName,
+  PostedOn,
+  LocationMarkerImage, LocationText,
+  CaptionText,
+  Photo };
