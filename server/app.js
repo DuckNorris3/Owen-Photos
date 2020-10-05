@@ -41,7 +41,6 @@ app.patch('/api/campsite', (req, res) => {
       res.json(data);
     }
   });
-
 })
 
 module.exports = app;

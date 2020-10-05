@@ -6,18 +6,18 @@ import axios from 'axios';
 
 const App = () => {
 
-  const getFromDB = () => {
-    axios.get('/api/campsite?siteID=3')
+  const getSiteById = (id) => {
+    axios.get(`/api/campsite?siteID=${id}`)
       .then(res => setSiteData(res.data[0]))
       .catch(err => console.log('Error: ', err));
   }
 
   const incrementHelpfulInDB = (siteID, picArray) => {
     axios.patch(`/api/campsite?siteID=${siteID}`, {newPicArray: picArray})
-      .then(res => getFromDB())
+      .then(res => getSiteById(siteID))
       .catch(err => {
         console.log('ERROR: ', err);
-        getFromDB();
+        getSiteById(siteID);
       });
   }
 
@@ -33,7 +33,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    getFromDB();
+    getSiteById(3);
   }, []);
 
   if (siteData) {

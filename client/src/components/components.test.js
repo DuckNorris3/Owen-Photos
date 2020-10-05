@@ -128,7 +128,7 @@ describe('<PhotoCarouselModal />', () => {
   let component;
 
   const modalRoot = global.document.createElement('div');
-  modalRoot.setAttribute('id', 'portal');
+  modalRoot.setAttribute('id', 'photo-carousel-modal');
   const body = global.document.querySelector('body');
   body.appendChild(modalRoot);
 
