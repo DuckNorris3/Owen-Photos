@@ -8,7 +8,7 @@ const seedDB = function() {
   PhotoSiteModel.create(seedData)
     .then(() => {
       console.log('database seeded successfully');
-      db.close();
+      db.disconnect();
     })
     .catch(err => console.log(err));
 };

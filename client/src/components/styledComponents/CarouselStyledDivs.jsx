@@ -21,6 +21,7 @@ const VerticalContainerRight = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-left: 25.5px;
   width: 5em;
   align-items: flex-end;
 `;
