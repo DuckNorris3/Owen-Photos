@@ -8,13 +8,21 @@ import axios from 'axios';
 const App = () => {
 
   const getSiteById = (id) => {
-    axios.get(`/api/campsite?siteID=${id}`)
+    axios.get(`http://127.0.0.1:3001/api/campsite?siteID=${id}`)
       .then(res => setSiteData(res.data[0]))
       .catch(err => console.log('Error: ', err));
   }
 
-  const pushHelpfulToServer = (siteID, picArray) => {
-    axios.patch(`/api/campsite?siteID=${siteID}`, {newPicArray: picArray})
+  // increment helpful button info locally in state
+  const incrementHelpful = () => {
+    let newSiteData = siteData;
+    newSiteData.pictures[currentPicIndex].helpful = newSiteData.pictures[currentPicIndex].helpful + 1;
+    pushPicArrayToServer(siteData.siteID, newSiteData.pictures);
+  }
+
+  // push updated pictures array with new info (usually an incremented Helpful number) to the server and database
+  const pushPicArrayToServer = (siteID, picArray) => {
+    axios.patch(`http://127.0.0.1:3001/api/campsite?siteID=${siteID}`, {newPicArray: picArray})
       .then(res => getSiteById(siteID))
       .catch(err => {
         console.log('ERROR: ', err);
@@ -25,12 +33,6 @@ const App = () => {
   const [siteData, setSiteData] = useState(null);
   const [modalOn, setModalOn] = useState(false);
   const [currentPicIndex, setCurrentPicIndex] = useState(0);
-
-  const incrementHelpful = () => {
-    let newSiteData = siteData;
-    newSiteData.pictures[currentPicIndex].helpful = newSiteData.pictures[currentPicIndex].helpful + 1;
-    pushHelpfulToServer(siteData.siteID, newSiteData.pictures);
-  }
 
   useEffect(() => {
     getSiteById(3);
