@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const cors = require('cors');
 
 const PhotoSiteController = require('../db/PhotoSiteController.js');
 
 app.use(express.json());
+app.use(cors());
 
 const staticPath = __dirname + '/../client/dist/';
 app.use(express.static(staticPath));
@@ -33,6 +35,7 @@ app.get('/api/campsite/', (req, res) => {
   });
 });
 
+// patch the pictures array for a specific siteID with updates (usually helpful = helpful + 1)
 app.patch('/api/campsite', (req, res) => {
   PhotoSiteController.updatePicArray(req.query.siteID, req.body.newPicArray, (err, data) => {
     if (err) {
