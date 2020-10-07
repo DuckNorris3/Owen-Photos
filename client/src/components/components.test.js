@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import { MemoryRouter } from 'react-router';
 import { configure, mount, shallow, render } from 'enzyme';
 import ReactTestUtils from 'react-dom/test-utils';
 import Adapter from 'enzyme-adapter-react-16';
@@ -90,7 +91,11 @@ const setCurrentPicIndex = setCurrentPicIndexSpy;
 
 describe('<App />', () => {
   it('should render a PhotoContainer component', () => {
-    const wrapper = shallow(<App siteId={5}/>);
+    const wrapper = mount(
+      <MemoryRouter initialEntries={[ '/5' ]}>
+        <App/>
+      </MemoryRouter>
+    );
     expect(wrapper.find('PhotoContainer')).toBeTruthy();
   });
 });
