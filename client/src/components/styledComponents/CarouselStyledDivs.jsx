@@ -48,7 +48,7 @@ const LocationInfoContainer = styled.div`
   align-items: flex-start;
   margin-top: 12px;
   height: 1em;
-  width: 18em;
+  width: 21m;
 `
 
 const UserInfoContainer = styled.div`
