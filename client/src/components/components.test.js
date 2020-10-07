@@ -90,7 +90,7 @@ const setCurrentPicIndex = setCurrentPicIndexSpy;
 
 describe('<App />', () => {
   it('should render a PhotoContainer component', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<App siteId={5}/>);
     expect(wrapper.find('PhotoContainer')).toBeTruthy();
   });
 });
