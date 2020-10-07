@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import PhotoContainer from './PhotoContainer.jsx';
 import PhotoCarouselModal from './PhotoCarouselModal.jsx';
@@ -6,6 +7,7 @@ import loaderStyle from './styledComponents/LoaderStyles.jsx';
 import axios from 'axios';
 
 const App = () => {
+  const { siteId } = useParams();
 
   const getSiteById = (id) => {
     axios.get(`http://127.0.0.1:3001/api/campsite?siteID=${id}`)
@@ -21,12 +23,12 @@ const App = () => {
   }
 
   // push updated pictures array with new info (usually an incremented Helpful number) to the server and database
-  const pushPicArrayToServer = (siteID, picArray) => {
-    axios.patch(`http://127.0.0.1:3001/api/campsite?siteID=${siteID}`, {newPicArray: picArray})
-      .then(res => getSiteById(siteID))
+  const pushPicArrayToServer = (inputSiteId, picArray) => {
+    axios.patch(`http://127.0.0.1:3001/api/campsite?siteID=${inputSiteId}`, {newPicArray: picArray})
+      .then(res => getSiteById(inputSiteId))
       .catch(err => {
         console.log('ERROR: ', err);
-        getSiteById(siteID);
+        getSiteById(inputSiteId);
       });
   }
 
@@ -35,7 +37,7 @@ const App = () => {
   const [currentPicIndex, setCurrentPicIndex] = useState(0);
 
   useEffect(() => {
-    getSiteById(3);
+    getSiteById(siteId);
   }, []);
 
   if (siteData) {

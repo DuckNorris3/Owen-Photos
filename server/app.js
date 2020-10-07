@@ -46,4 +46,8 @@ app.patch('/api/campsite', (req, res) => {
   });
 })
 
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root: './client/dist/' });
+});
+
 module.exports = app;
