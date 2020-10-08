@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
-const mongooseUri = 'mongodb://localhost/tenthop-photos'
+dotenv.config();
+
+const mongooseUri = process.env.MONGOOSE_URI;
 
 const db = mongoose.connect(mongooseUri);
 
