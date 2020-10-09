@@ -7,6 +7,7 @@
     "start": "nodemon server/server.js",
     "react-dev": "webpack -d --watch",
     "test": "jest",
+    "build": "webpack --mode=production",
     "seed-db": "node db/seed.js"
   },
   "repository": {
