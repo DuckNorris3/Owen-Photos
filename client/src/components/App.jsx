@@ -10,7 +10,7 @@ const App = () => {
   const { siteId } = useParams();
 
   const getSiteById = (id) => {
-    axios.get(`http://127.0.0.1:3001/api/campsite?siteID=${id}`)
+    axios.get(`http://ec2-18-207-55-176.compute-1.amazonaws.com:8080/api/campsite?siteID=${id}`)
       .then(res => setSiteData(res.data[0]))
       .catch(err => console.log('Error: ', err));
   }
@@ -24,7 +24,7 @@ const App = () => {
 
   // push updated pictures array with new info (usually an incremented Helpful number) to the server and database
   const pushPicArrayToServer = (inputSiteId, picArray) => {
-    axios.patch(`http://127.0.0.1:3001/api/campsite?siteID=${inputSiteId}`, {newPicArray: picArray})
+    axios.patch(`http://ec2-18-207-55-176.compute-1.amazonaws.com:8080/api/campsite?siteID=${inputSiteId}`, {newPicArray: picArray})
       .then(res => getSiteById(inputSiteId))
       .catch(err => {
         console.log('ERROR: ', err);
