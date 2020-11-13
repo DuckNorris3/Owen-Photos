@@ -1,5 +1,5 @@
-# Owen-Photos
-Photo Module and Carousel for TentHop
+# TentHop Photo Carousel
+This is the photo module and carousel service for the TentHop website.
 
 ## Related Projects
 * https://github.com/DuckNorris3/Campsite-Host-Info
@@ -13,5 +13,5 @@ To seed the database, run `node db/seed.js`
 ## Installing Dependencies
 
 From within the root directory:
-`npm install -g webpack`
-`npm install`
+* `npm install -g webpack`
+* `npm install`
